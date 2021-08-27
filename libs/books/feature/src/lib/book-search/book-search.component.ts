@@ -25,7 +25,7 @@ export class BookSearchComponent implements OnInit {
   constructor(
     private readonly store: Store,
     private readonly fb: FormBuilder
-  ) { }
+  ) {}
 
   get searchTerm(): string {
     return this.searchForm.value.term;
@@ -37,22 +37,22 @@ export class BookSearchComponent implements OnInit {
     });
   }
 
-  formatDate(date: void | string): String | undefined {
+  formatDate(date: void | string) {
     return date
       ? new Intl.DateTimeFormat('en-US').format(new Date(date))
       : undefined;
   }
 
-  addBookToReadingList(book: Book): void {
+  addBookToReadingList(book: Book) {
     this.store.dispatch(addToReadingList({ book }));
   }
 
-  searchExample(): void {
+  searchExample() {
     this.searchForm.controls.term.setValue('javascript');
     this.searchBooks();
   }
 
-  searchBooks(): void {
+  searchBooks() {
     if (this.searchForm.value.term) {
       this.store.dispatch(searchBooks({ term: this.searchTerm }));
     } else {
